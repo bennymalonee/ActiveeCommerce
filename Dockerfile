@@ -1,8 +1,9 @@
-# Stage 1: Build frontend assets
-FROM node:18-alpine AS frontend
+# Stage 1: Build frontend assets (Debian base: prebuilt node-sass + Python/build deps if needed)
+FROM node:18-bookworm-slim AS frontend
 
-# node-sass needs node-gyp → Python + build tools
-RUN apk add --no-cache python3 make g++
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 make g++ ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 ENV PYTHON=/usr/bin/python3
 
 WORKDIR /app
