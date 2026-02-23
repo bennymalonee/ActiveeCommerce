@@ -1,6 +1,10 @@
 # Stage 1: Build frontend assets
 FROM node:18-alpine AS frontend
 
+# node-sass needs node-gyp → Python + build tools
+RUN apk add --no-cache python3 make g++
+ENV PYTHON=/usr/bin/python3
+
 WORKDIR /app
 
 COPY package.json ./
