@@ -1,0 +1,34 @@
+{
+    "name": "Auction",
+    "unique_identifier": "auction",
+    "version": "1.0",
+    "minimum_item_version": "3.0",
+    "addon_banner": "",
+    "directory": [
+        {
+            "name": [
+                "resources/views/auction"
+            ]
+        }
+    ],
+    "files": [
+        {
+            "root_directory": "addons/auction/Controllers/AuctionProductController.php",
+            "update_directory": "app/Http/Controllers/AuctionProductController.php"
+        },
+        {
+            "root_directory": "addons/auction/Controllers/AuctionProductBidController.php",
+            "update_directory": "app/Http/Controllers/AuctionProductBidController.php"
+        },
+        {
+            "root_directory": "addons/auction/Services/AuctionService.php",
+            "update_directory": "app/Services/AuctionService.php"
+        }
+    ],
+    "folders": [
+        {
+            "root_directory": "addons/auction/views",
+            "update_directory": "resources/views/auction"
+        }
+    ]
+}
