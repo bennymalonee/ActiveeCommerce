@@ -1,10 +1,10 @@
 # Stage 1: Build frontend assets
-FROM node:20-alpine AS frontend
+FROM node:18-alpine AS frontend
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm ci 2>/dev/null || npm install
+COPY package.json ./
+RUN npm install --legacy-peer-deps
 
 COPY webpack.mix.js ./
 COPY resources ./resources/
