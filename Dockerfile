@@ -14,7 +14,10 @@ RUN npm install --legacy-peer-deps
 COPY webpack.mix.js ./
 COPY resources ./resources/
 
-RUN npm run production && ls -la public/js public/css public/mix-manifest.json
+ENV CI=true
+RUN mkdir -p public/js public/css
+RUN npm run production
+RUN ls -la public/mix-manifest.json && ls -R public/
 
 
 # Stage 2: PHP app with nginx
