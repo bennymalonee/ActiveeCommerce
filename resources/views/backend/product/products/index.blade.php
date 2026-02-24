@@ -156,7 +156,6 @@
                             id="type" onchange="sort_products()">
                             <option value="" class="hov-text-light text-white fs-14 fw-400">Sort</option>
                             <option value="rating,desc" class="hov-bg-light text-secondary fs-14 fw-40"
-<<<<<<< HEAD
                                 @isset($col_name) @isset($query) @if ($col_name == 'rating' && $query == 'desc') selected @endif @endisset @endisset>
                                 {{ translate('Rating (High > Low)') }}</option>
                             <option value="rating,asc" class="hov-bg-light text-secondary fs-14 fw-40"
@@ -173,24 +172,6 @@
                                 {{ translate('Base Price (High > Low)') }}</option>
                             <option value="unit_price,asc" class="hov-bg-light text-secondary fs-14 fw-40"
                                 @isset($col_name) @isset($query) @if ($col_name == 'unit_price' && $query == 'asc') selected @endif @endisset @endisset>
-=======
-                                @isset($col_name, $query) @if ($col_name == 'rating' && $query == 'desc') selected @endif @endisset>
-                                {{ translate('Rating (High > Low)') }}</option>
-                            <option value="rating,asc" class="hov-bg-light text-secondary fs-14 fw-40"
-                                @isset($col_name, $query) @if ($col_name == 'rating' && $query == 'asc') selected @endif @endisset>
-                                {{ translate('Rating (Low > High)') }}</option>
-                            <option value="num_of_sale,desc" class="hov-bg-light text-secondary fs-14 fw-40"
-                                @isset($col_name, $query) @if ($col_name == 'num_of_sale' && $query == 'desc') selected @endif @endisset>
-                                {{ translate('Num of Sale (High > Low)') }}</option>
-                            <option value="num_of_sale,asc" class="hov-bg-light text-secondary fs-14 fw-40"
-                                @isset($col_name, $query) @if ($col_name == 'num_of_sale' && $query == 'asc') selected @endif @endisset>
-                                {{ translate('Num of Sale (Low > High)') }}</option>
-                            <option value="unit_price,desc" class="hov-bg-light text-secondary fs-14 fw-40"
-                                @isset($col_name, $query) @if ($col_name == 'unit_price' && $query == 'desc') selected @endif @endisset>
-                                {{ translate('Base Price (High > Low)') }}</option>
-                            <option value="unit_price,asc" class="hov-bg-light text-secondary fs-14 fw-40"
-                                @isset($col_name, $query) @if ($col_name == 'unit_price' && $query == 'asc') selected @endif @endisset>
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                                 {{ translate('Base Price (Low > High)') }}</option>
                         </select>
                     </div>
@@ -600,11 +581,7 @@
         });
 
         function sort_products(el){
-<<<<<<< HEAD
             getProducts(currentTab);
-=======
-            getProducts(currentTab, );
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         }
 
         $('#search_input').on('keyup', function () {

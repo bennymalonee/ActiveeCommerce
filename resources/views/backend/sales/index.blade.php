@@ -1,7 +1,6 @@
 @extends('backend.layouts.app')
 
 @section('content')
-<<<<<<< HEAD
 @php
     CoreComponentRepository::instantiateShopRepository();
     CoreComponentRepository::initializeCache();
@@ -96,98 +95,6 @@
                             onchange="sort_orders()">
                             <option value="" class="hov-bg-light text-secondary fs-14 fw-40">{{ translate('All Sellers') }}
                             </option>
-=======
-    @php
-        CoreComponentRepository::instantiateShopRepository();
-        CoreComponentRepository::initializeCache();
-    @endphp
-
-    <div class="aiz-titlebar text-left pb-5px">
-        <div class="row align-items-center">
-            <div class="col-auto">
-                <h1 class="h3 fw-bold">{{$order_types}}</h1>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="card">
-
-        <!--Nav Tab -->
-         <div
-            class="d-flex align-items-center justify-content-between flex-wrap border-bottom  border-light px-25px table-nav-tabs pb-3 pb-xl-0">
-            <div class="table-tabs-container flex-grow-1">
-                <ul class="nav nav-tabs border-0 " id="myTab" role="tablist">
-                    @foreach ($seller_types as $seller_type)
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link px-0 pb-15px fs-14 fw-500 {{ $loop->first ? 'active' : '' }}"
-                                data-toggle="tab" role="tab" aria-selected="{{ $loop->first ? 'true' : 'false' }}"
-                                id="{{ Str::slug($seller_type) }}-tab"
-                                onclick="changeTab(this, '{{ Str::slug($seller_type) }}')" role="tab"
-                                aria-controls="{{ Str::slug($seller_type) }}">
-                                {{ translate($seller_type) }}
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-           
-        </div>
-        <div class="tab-filter-bar">
-            <form class="" id="sort_orders" action="" method="GET">
-                <div class="card-header row  border-0 pb-0 mt-2">
-                    <div class="col pl-0 pl-md-3">
-                        <div class="input-group mb-0 border border-light px-3 bg-light rounded-1">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text border-0 bg-transparent px-0" id="search">
-                                    <svg id="Group_38844" data-name="Group 38844" xmlns="http://www.w3.org/2000/svg"
-                                        width="16.001" height="16" viewBox="0 0 16.001 16">
-                                        <path id="Path_3090" data-name="Path 3090"
-                                            d="M8.248,14.642a6.394,6.394,0,1,1,6.394-6.394A6.4,6.4,0,0,1,8.248,14.642Zm0-11.509a5.115,5.115,0,1,0,5.115,5.115A5.121,5.121,0,0,0,8.248,3.133Z"
-                                            transform="translate(-1.854 -1.854)" fill="#a5a5b8" />
-                                        <path id="Path_3091" data-name="Path 3091"
-                                            d="M23.011,23.651a.637.637,0,0,1-.452-.187l-4.92-4.92a.639.639,0,0,1,.9-.9l4.92,4.92a.639.639,0,0,1-.452,1.091Z"
-                                            transform="translate(-7.651 -7.651)" fill="#a5a5b8" />
-                                    </svg>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control form-control-sm border-0 px-2 bg-transparent"
-                                id="search_input" name="search" placeholder="Search Orders…">
-                        </div>
-                    </div>
-
-                    
-                    <div class="dropdown mb-2 mb-md-0 bg-light mt-2 mt-md-0 px-md-1 rounded-1">
-                        <button class="btn border dropdown-toggle border-light text-secondary fs-14 fw-400" type="button"
-                            data-toggle="dropdown">
-                            {{ translate('Bulk Action') }}
-                        </button>
-                        @canany(['delete_order', 'export_order'])
-                        <div class="dropdown-menu dropdown-menu-right">
-                            @can('export_order')
-                            <a class="dropdown-item confirm-alert text-secondary fs-14 fw-500 hov-bg-light hov-text-blue"
-                                href="javascript:void(0)" id="order-bulk-export" onclick="order_bulk_export()">{{ translate('Export') }}</a>
-                            @endcan
-
-                            @if(auth()->user()->can('unpaid_order_payment_notification_send') && $unpaid_order_payment_notification->status == 1 && Route::currentRouteName() == 'unpaid_orders.index')
-                            <a class="dropdown-item text-secondary fs-14 fw-500 hov-bg-light hov-text-blue" id="bulk_unpaid_order_payment_notification"
-                               href="javascript:void(0)" onclick="bulk_unpaid_order_payment_notification()">{{ translate('Unpaid Order Payment Notification') }}</a>
-                            @endif
-
-                            @can('delete_order')
-                            <a class="dropdown-item confirm-alert text-danger fs-14 fw-500 hov-bg-light hov-text-blue"
-                                href="javascript:void(0)" onclick="bulkDelete()">
-                                {{ translate('Delete Selection') }}</a>
-                            @endcan
-                        </div>
-                        @endcan
-                    </div>
-                    
-                    @if($seller_type == 'seller')
-                    <div class="col-md-2 mr-0 px-0 inner-select ml-1">
-                        <select class="form-control  aiz-selectpicker mb-2 mb-md-0 bg-light" id="user_id" name="user_id" onchange="sort_orders()">
-                            <option value="" class="hov-bg-light text-secondary fs-14 fw-40">{{ translate('All Sellers') }}</option>
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                             @foreach (App\Models\User::where('user_type', '=', 'seller')->get() as $key => $seller)
                                 <option class="hov-bg-light text-secondary fs-14 fw-40" value="{{ $seller->id }}">
                                     {{ $seller->shop?->name }} ({{ $seller->name }})
@@ -195,7 +102,6 @@
                             @endforeach
                         </select>
                     </div>
-<<<<<<< HEAD
                 @endif
                 <!--Filter-->
                 <div class="col-md-2 ml-auto mb-1 mb-md-0 px-0 px-md-1">
@@ -293,93 +199,6 @@
 
 @section('modal')
     <!-- loading Modal -->
-=======
-                    @endif
-                    <!--Filter-->
-                    <div class="col-md-2 ml-auto mb-1 mb-md-0 px-0 px-md-1">
-                        <div class="dropdown w-100">
-                            <button
-                                class="btn px-3  w-100 d-flex justify-content-between align-items-center dropdown-toggle"
-                                type="button" id="filterMenu" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                <span class="text-secondary fs-14 fw-400">{{translate('Filter By delivery Status')}}</span>
-                                <span class="dropdown-toggle-icon"></span>
-                            </button>
-
-                            <div class="dropdown-menu py-3 w-100" aria-labelledby="filterMenu">
-                                <div class="form-check hover-bg-light py-2 d-flex align-items-center">
-                                    <input class="input-check" type="checkbox" id="all">
-                                    <label class="form-check-label fs-14 px-2" for="all">{{translate('All')}}</label>
-                                </div>
-                                <div class="form-check hover-bg-light py-2 d-flex align-items-center">
-                                    <input class="input-check" type="checkbox" id="pending">
-                                    <label class="form-check-label fs-14 px-2" for="pending">{{ translate('Pending') }}</label>
-                                </div>
-                                <div class="form-check hover-bg-light py-2 d-flex align-items-center">
-                                    <input class="input-check" type="checkbox" id="confirmed">
-                                    <label class="form-check-label fs-14 px-2" for="confirmed">{{ translate('Confirmed') }}</label>
-                                </div>
-                                <div class="form-check hover-bg-light py-2 d-flex align-items-center">
-                                    <input class="input-check" type="checkbox" id="picked_up">
-                                    <label class="form-check-label fs-14 px-2" for="picked_up">{{ translate('Picked Up') }}</label>
-                                </div>
-
-                                <div class="form-check hover-bg-light py-2 d-flex align-items-center">
-                                    <input class="input-check" type="checkbox" id="on_the_way">
-                                    <label class="form-check-label fs-14 px-2" for="on_the_way">{{ translate('On The Way') }}</label>
-                                </div>
-                                <div class="form-check hover-bg-light py-2 d-flex align-items-center">
-                                    <input class="input-check" type="checkbox" id="delivered">
-                                    <label class="form-check-label fs-14 px-2" for="delivered"> {{ translate('Delivered') }}</label>
-                                </div>
-                                <div class="form-check hover-bg-light py-2 d-flex align-items-center">
-                                    <input class="input-check" type="checkbox" id="cancelled">
-                                    <label class="form-check-label fs-14 px-2" for="cancelled"> {{ translate('Cancel') }}</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    @if(Route::currentRouteName() != 'unpaid_orders.index')
-                    <div class="col-md-2 ml-auto pr-0 pr-md-1 pl-0 inner-select ">
-                        <select class="form-control  aiz-selectpicker mb-2 mb-md-0 bg-light" name="payment_status"
-                            id="payment_status" onchange="sort_orders()">
-                            <option value="" class="hov-text-light text-white fs-14 fw-400">{{ translate('Filter by Payment Status') }}</option>
-                            <option value="payment_status,paid" class="hov-bg-light text-secondary fs-14 fw-40"
-                                @isset($col_name, $query) @if ($col_name == 'payment_status' && $query == 'paid') selected @endif @endisset>
-                                {{ translate('Paid') }}</option>
-                            <option value="payment_status,unpaid" class="hov-bg-light text-secondary fs-14 fw-40"
-                                @isset($col_name, $query) @if ($col_name == 'payment_status' && $query == 'unpaid') selected @endif @endisset>
-                                {{ translate('Unpaid') }}</option>
-                          
-                        </select>
-                    </div>
-                    @endif
-
-                    <div class="col-md-2 ml-auto pl-0 inner-select input-group mb-0 border border-light px-3 bg-light rounded-1">
-                        <input type="text" class="aiz-date-range form-control form-control-sm border-0 px-2 bg-transparent" value=""
-                            name="date" placeholder="{{ translate('Filter by date') }}" data-format="DD-MM-Y"
-                            data-separator=" to " data-advanced-range="true" autocomplete="off">
-                    </div>
-
-                </div>
-            
-
-                <!-- Dynamic Tab Content -->
-                <div class="tab-content filter-tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="tab-content">
-                        <!-- AJAX content will load here -->
-                    </div>
-                </div>
-
-            </form>
-        </div>
-    </div>
-@endsection
-
-@section('modal')
-     <!-- loading Modal -->
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
     @include('modals.loading_modal')
 
     <!-- Offcanvas -->
@@ -396,7 +215,6 @@
                 <div class="modal-header border-0">
                     <button type="button" class="close" data-dismiss="modal"></button>
                 </div>
-<<<<<<< HEAD
                 <form class="form-horizontal" action="{{ route('unpaid_order_payment_notification') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
@@ -406,14 +224,6 @@
                             {{ translate('Are you sure to send notification for the selected orders?') }}</p>
                         <button type="submit"
                             class="btn btn-warning rounded-2 mt-2 fs-13 fw-700 w-250px">{{ translate('Send Notification') }}</button>
-=======
-                <form class="form-horizontal" action="{{ route('unpaid_order_payment_notification') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body text-center">
-                        <input type="hidden" name="order_ids" value="" id="order_ids">
-                        <p class="mt-2 mb-2 fs-16 fw-700">{{ translate('Are you sure to send notification for the selected orders?') }}</p>
-                        <button type="submit" class="btn btn-warning rounded-2 mt-2 fs-13 fw-700 w-250px">{{ translate('Send Notification') }}</button>
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                     </div>
                 </form>
             </div>
@@ -433,7 +243,6 @@
         let brand_id = '{{ $brand_id ?? '' }}';
         let category_id = '{{ $category_id ?? '' }}';
 
-<<<<<<< HEAD
         $(document).on("change", ".check-all", function () {
             if (this.checked) {
                 // Iterate each checkbox
@@ -442,16 +251,6 @@
                 });
             } else {
                 $('.check-one:checkbox').each(function () {
-=======
-        $(document).on("change", ".check-all", function() {
-            if(this.checked) {
-                // Iterate each checkbox
-                $('.check-one:checkbox').each(function() {
-                    this.checked = true;
-                });
-            } else {
-                $('.check-one:checkbox').each(function() {
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                     this.checked = false;
                 });
             }
@@ -462,11 +261,7 @@
             $.ajax({
                 url: "{{ route('orders.destroy', ':id') }}".replace(':id', orderId),
                 type: 'GET',
-<<<<<<< HEAD
                 success: function (response) {
-=======
-                success: function(response) {
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                     if (response == 1) {
                         AIZ.plugins.notify('success', '{{ translate('Selected item deleted successfully') }}');
                         hideBulkActionModal();
@@ -489,26 +284,16 @@
                 contentType: false,
                 processData: false,
                 success: function (response) {
-<<<<<<< HEAD
                     if (response == 1) {
                         AIZ.plugins.notify('success', '{{ translate('Selected items deleted successfully') }}');
                         hideBulkActionModal();
-=======
-                    if(response == 1) {
-                        AIZ.plugins.notify('success', '{{ translate('Selected items deleted successfully') }}');
-                        hideBulkActionModal(); 
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                         getOrders(currentTab);
                     }
                 }
             });
         }
 
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         function singleDelete(orderId) {
             showBulkActionModal();
             $('#confirmation-title').text('{{ translate('Delete Confirmation') }}');
@@ -517,15 +302,7 @@
             $('#conform-yes-btn').attr("onclick", "single_delete(" + orderId + ")");
             $('.confirmation-icon').addClass('d-none');
             $('#delete-confirm-icon').removeClass('d-none');
-<<<<<<< HEAD
 
-        }
-
-=======
-           
-        }
-        
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         function bulkDelete() {
             if ($('.check-one:checked').length == 0) {
                 AIZ.plugins.notify('danger', '{{ translate('Please select at least one item') }}');
@@ -535,17 +312,9 @@
             $('#confirmation-title').text('{{ translate('Delete Confirmation') }}');
             $('#confirmation-question').text('{{ translate('Are you sure you want to delete the selected Orders?') }}');
             $('#impact-message').text('{{ translate('This action cannot be undone. Once deleted, the orders will be permanently removed.') }}');
-<<<<<<< HEAD
             $('#conform-yes-btn').attr("onclick", "bulk_delete()");
             $('.confirmation-icon').addClass('d-none');
             $('#delete-confirm-icon').removeClass('d-none');
-
-=======
-            $('#conform-yes-btn').attr("onclick","bulk_delete()");
-            $('.confirmation-icon').addClass('d-none');
-            $('#delete-confirm-icon').removeClass('d-none');
-           
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         }
 
 
@@ -558,17 +327,9 @@
             $('#confirmation-title').text('{{ translate('Publish Confirmation') }}');
             $('#confirmation-question').text('{{ translate('Are you sure you want to publish the selected products?') }}');
             $('#impact-message').text('{{ translate('Products already published will be skipped.') }}');
-<<<<<<< HEAD
             $('#conform-yes-btn').attr("onclick", "bulk_publish()");
             $('.confirmation-icon').addClass('d-none');
             $('#publish-confirm-icon').removeClass('d-none');
-
-=======
-            $('#conform-yes-btn').attr("onclick","bulk_publish()");
-            $('.confirmation-icon').addClass('d-none');
-            $('#publish-confirm-icon').removeClass('d-none');
-           
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         }
 
         function bulkProductTodaysDeal() {
@@ -580,23 +341,11 @@
             $('#confirmation-title').text('{{ translate('Today’s Deal Confirmation') }}');
             $('#confirmation-question').text('{{ translate('Are you sure you want to make the selected products as Today’s Deals?') }}');
             $('#impact-message').text('{{ translate('Products already marked as Today’s Deals will be skipped.') }}');
-<<<<<<< HEAD
             $('#conform-yes-btn').attr("onclick", "bulk_todays_deal()");
             $('.confirmation-icon').addClass('d-none');
             $('#todays-confirm-icon').removeClass('d-none');
 
         }
-
-
-=======
-            $('#conform-yes-btn').attr("onclick","bulk_todays_deal()");
-            $('.confirmation-icon').addClass('d-none');
-            $('#todays-confirm-icon').removeClass('d-none');
-            
-        }
-
-        
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         function bulkFeatured() {
             if ($('.check-one:checked').length == 0) {
                 AIZ.plugins.notify('danger', '{{ translate('Please select at least one item') }}');
@@ -606,19 +355,10 @@
             $('#confirmation-title').text('{{ translate('Feature Confirmation') }}');
             $('#confirmation-question').text('{{ translate('Are you sure you want to mark the selected products as featured ?') }}');
             $('#impact-message').text('{{ translate('Products already marked as featured will be skipped.') }}');
-<<<<<<< HEAD
             $('#conform-yes-btn').attr("onclick", "bulk_feature()");
             $('.confirmation-icon').addClass('d-none');
             $('#feature-confirm-icon').removeClass('d-none');
         }
-
-=======
-            $('#conform-yes-btn').attr("onclick","bulk_feature()");
-            $('.confirmation-icon').addClass('d-none');
-            $('#feature-confirm-icon').removeClass('d-none');
-        }
-        
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         function getOrders(slug, page = 1) {
             var type = $('#type').val();
             var payment_status = $('#payment_status').val();
@@ -632,22 +372,14 @@
             let status = '{{ $status ?? '' }}';
             $('#tab-content').html('<div class="footable-loader mt-5"><span class="fooicon fooicon-loader"></span></div>');
             $.ajax({
-<<<<<<< HEAD
                 url: `{{ route('orders.filter') }}?page=${page}`,
                 method: 'GET',
                 data: { type: type, seller_type: slug, search: keyword, selected_filter: selected_filter, user_id: user_id, order_from: order_from, payment_status: payment_status, date: dateRange, col: col, status: status },
                 success: function (response) {
-=======
-                url: `{{ route('orders.filter' ) }}?page=${page}`,
-                method: 'GET',
-                data: { type: type, seller_type: slug, search: keyword, selected_filter:selected_filter, user_id: user_id, order_from: order_from, payment_status: payment_status, date:dateRange, col: col, status: status },
-                success: function(response) {
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                     $('#tab-content').html(response.html);
                     initFooTable();
 
                 },
-<<<<<<< HEAD
                 error: function () {
                     $('#tab-content').html(`
                             <div class="text-center py-2 w-100">
@@ -655,15 +387,6 @@
                                 <i class="las la-frown fs-48 text-soft-white"></i>
                             </div>
                         `);
-=======
-                error: function() {
-                    $('#tab-content').html(`
-                        <div class="text-center py-2 w-100">
-                            <h5 class="fs-16 fw-bold text-gray">{{ translate('Something Went Wrong') }}</h5>
-                            <i class="las la-frown fs-48 text-soft-white"></i>
-                        </div>
-                    `);
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                 }
             });
         }
@@ -671,7 +394,6 @@
         function changeTab(button, statusSlug) {
             document.querySelectorAll('#myTab .nav-link').forEach(el => el.classList.remove('active'));
             button.classList.add('active');
-<<<<<<< HEAD
             if (statusSlug == 'inhouse-products') {
                 seller_type = 'admin';
             }
@@ -683,19 +405,6 @@
             }
             // Show or hide dropdown options for draft products
             if (statusSlug === 'drafts') {
-=======
-            if(statusSlug =='inhouse-products'){
-                seller_type = 'admin';
-            }
-            else if (statusSlug =='seller-products'){
-                seller_type = 'seller';
-            }
-            else{
-                seller_type = '{{ $seller_type }}';
-            }
-            // Show or hide dropdown options for draft products
-            if(statusSlug === 'drafts'){
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                 // Hide Publish, Featured, Todays Deal
                 $('#bulk-publish-option, #bulk-featured-option, #bulk-td-option').hide();
             } else {
@@ -706,7 +415,6 @@
             getOrders(statusSlug);
         }
 
-<<<<<<< HEAD
         document.addEventListener('DOMContentLoaded', function () {
             getOrders(currentTab);
         });
@@ -720,21 +428,6 @@
                 getOrders(currentTab);
             });
             $('.aiz-date-range').on('change', function () {
-=======
-        document.addEventListener('DOMContentLoaded', function() {
-            getOrders(currentTab);
-        });
-
-        function sort_orders(el){
-            getOrders(currentTab);
-        }
-
-        $(document).ready(function() {
-            $('.aiz-date-range').on('apply.daterangepicker', function(ev, picker) {
-                getOrders(currentTab);
-            });
-            $('.aiz-date-range').on('change', function() {
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                 getOrders(currentTab);
             });
         });
@@ -761,11 +454,7 @@
             selected_filter = [];
 
             $('.input-check:checked').each(function () {
-<<<<<<< HEAD
                 if (this.id !== 'all') {
-=======
-                if (this.id !== 'all') { 
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                     selected_filter.push(this.id);
                 }
             });
@@ -774,22 +463,14 @@
 
 
 
-<<<<<<< HEAD
         $(document).on('click', '.pagination a', function (e) {
-=======
-        $(document).on('click', '.pagination a', function(e) {
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
             e.preventDefault();
             const page = $(this).attr('href').split('page=')[1];
             getOrders(currentTab, page);
         });
 
 
-<<<<<<< HEAD
         function order_bulk_export() {
-=======
-        function order_bulk_export (){
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
             var url = '{{route('order-bulk-export')}}';
             $("#sort_orders").attr("action", url);
             $('#sort_orders').submit();
@@ -797,7 +478,6 @@
         }
 
         // Unpaid Order Payment Notification
-<<<<<<< HEAD
         function unpaid_order_payment_notification(order_id) {
             var orderIds = [];
             orderIds.push(order_id);
@@ -819,31 +499,6 @@
                 AIZ.plugins.notify('danger', '{{ translate('Please Select Order first.') }}');
             }
         }
-
-=======
-        function unpaid_order_payment_notification(order_id){
-            var orderIds = [];
-            orderIds.push(order_id);
-            $('#order_ids').val(orderIds);
-            $('#complete_unpaid_order_payment').modal('show', {backdrop: 'static'});
-        }
-
-        // Unpaid Order Payment Notification
-        function bulk_unpaid_order_payment_notification(){
-            var orderIds = [];
-            $(".check-one[name='id[]']:checked").each(function() {
-                orderIds.push($(this).val());
-            });
-            if(orderIds.length > 0){
-                $('#order_ids').val(orderIds);
-                $('#complete_unpaid_order_payment').modal('show', {backdrop: 'static'});
-            }
-            else{
-                AIZ.plugins.notify('danger', '{{ translate('Please Select Order first.') }}');
-            }
-        }
-        
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         //Table Nav Tabs Scroll Behavior
         document.addEventListener('DOMContentLoaded', () => {
             const tableTabsContainer = document.querySelector('.table-tabs-container');
@@ -862,8 +517,4 @@
         });
 
     </script>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01

@@ -99,17 +99,10 @@
                             id="payment_status" onchange="sort_orders()">
                             <option value="" class="hov-text-light text-white fs-14 fw-400">{{ translate('Filter by Payment Status') }}</option>
                             <option value="payment_status,paid" class="hov-bg-light text-secondary fs-14 fw-40"
-<<<<<<< HEAD
                                 @isset($col_name) @isset($query) @if ($col_name == 'payment_status' && $query == 'paid') selected @endif @endisset @endisset>
                                 {{ translate('Paid') }}</option>
                             <option value="payment_status,unpaid" class="hov-bg-light text-secondary fs-14 fw-40"
                                 @isset($col_name) @isset($query) @if ($col_name == 'payment_status' && $query == 'unpaid') selected @endif @endisset @endisset>
-=======
-                                @isset($col_name, $query) @if ($col_name == 'payment_status' && $query == 'paid') selected @endif @endisset>
-                                {{ translate('Paid') }}</option>
-                            <option value="payment_status,unpaid" class="hov-bg-light text-secondary fs-14 fw-40"
-                                @isset($col_name, $query) @if ($col_name == 'payment_status' && $query == 'unpaid') selected @endif @endisset>
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                                 {{ translate('Unpaid') }}</option>
                           
                         </select>

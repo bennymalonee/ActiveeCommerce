@@ -1,7 +1,6 @@
 @extends('seller.layouts.app')
 @section('panel_content')
 
-<<<<<<< HEAD
     <div>
 
         <div class="row d-flex g-3">
@@ -111,102 +110,6 @@
 
                                     <a href="#">
                                         <span class="badge badge-dodger-blue w-100 text-blue p-3 rounded-3"
-=======
-<div>
-
-    <div class="row d-flex g-3">
-        <div class="col-md-8 col-sm-12">
-            <!--First element -->
-            <div class="top-left-section border p-4">
-                <div class="p-4 text-white d-flex justify-content-between bg-gunmetal-blue rounded-2">
-                    <div>
-                        <p class="fs-24 m-0 fw-700 pb-2">{{ translate('Order') }} #{{$order?->order_code}}</p>
-                        <div class="d-flex">
-                            <p class="text-white m-0">
-                                <span class="fw-800">{{\Carbon\Carbon::parse($order->created_at)->format('d.m.Y')}}</span>
-                                at
-                                <span class="fw-800">{{\Carbon\Carbon::parse($order->created_at)->format(' h.i A')}}</span>
-                            </p>
-                            <p class="text-white m-0 pl-3">
-                                {{ translate('Seller') }} 
-                                <span class="fw-800">{{$order->preorder_product->user->shop != null ? $order->preorder_product->user->shop->name : translate('In-house Product')}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center" style="gap: 5px;">
-                        <a class="btn text-white p-1 border-0" style="background-color: #6C7A8B;" href="{{route('preorder.invoice_preview', $order->id)}}">
-                            <i class="las la-print fs-16"></i>
-                        </a>
-
-                        <a class="btn text-white p-1 border-0" style="background-color: #6C7A8B;" href="{{route('preorder.invoice_download', $order->id)}}">
-                            <i class="las la-download fs-16"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="row mt-4 g-3 p-3">
-                    <div class="col-md-6 col-sm-12">
-                        <div class="preorder-border-dashed p-4 rounded-2 d-flex justify-content-between row">
-                            <div class="mb-3 col-sm-6">
-                                @php
-                                $removedXML = '
-                                <?xml version="1.0" encoding="UTF-8"?>';
-                                @endphp
-                                {!! str_replace($removedXML, '', QrCode::size(100)->generate($order->code ??
-                                "JKHKJHJHJG65")) !!}
-                            </div>
-                            <div class="ml-4">
-                                <p>{{ translate('Order Status') }}</p>
-                                <p>
-                                    @if($order->delivery_status == 2)
-                                        <span class="badge badge-inline badge-success p-2 rounded-3">{{ translate('Delivered')}}</span>
-                                    @elseif($order->shipping_status == 2)
-                                        <span class="badge badge-inline badge-info p-2 rounded-3">{{ translate('In Shipping')}}</span>
-                                    @elseif($order->final_order_status == 1)
-                                        <span class="badge badge-inline badge-warning p-2 rounded-3">{{ translate('Final Order Requested')}}</span>
-                                    @elseif($order->final_order_status == 2)
-                                        <span class="badge badge-inline badge-success p-2 rounded-3">{{ translate('Final Order Accepted')}}</span>
-                                    @elseif($order->final_order_status == 3)
-                                        <span class="badge badge-inline badge-danger p-2 rounded-3">{{ translate('Final Order Cancelled')}}</span>
-                                    @elseif($order->prepayment_confirm_status == 1)
-                                        <span class="badge badge-inline badge-primary p-2 rounded-3">{{ translate('Prepayment Requested')}}</span>
-                                    @elseif($order->prepayment_confirm_status == 2)
-                                        <span class="badge badge-inline badge-dodger-blue p-2 rounded-3">{{ translate('Prepayment Accepted')}}</span>
-                                    @elseif($order->prepayment_confirm_status == 3)
-                                        <span class="badge badge-inline badge-dodger-blue p-2 rounded-3">{{ translate('Prepayment Cancelled')}}</span>
-                                    @elseif($order->request_preorder_status == 1)
-                                        <span class="badge badge-inline badge-secondary p-2 rounded-3">{{ translate('Preorder Requested')}}</span>
-                                    @elseif($order->request_preorder_status == 2)
-                                        <span class="badge badge-inline badge-gray p-2 rounded-3">{{ translate('Preorder Request Accepted')}}</span>
-                                    @elseif($order->request_preorder_status == 2)
-                                        <span class="badge badge-inline badge-danger p-2 rounded-3">{{ translate('Preorder Request Cancelled')}}</span>
-                                    @endif
-                                </p>
-                                <p>{{ translate('Amount') }}</p>
-                                <p class="m-0 p-0"> {{format_price($order->subtotal)}}</p>
-                                <p class="mb-1 p-0"><span>{{ translate('Prepay') }}</span> {{format_price($order->prepayment)}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div class="preorder-border-dashed rounded-2 d-flex justify-content-between p-4">
-                            <div>
-                                <p><b>{{$order->user?->name}}</b></p>
-                                <p>
-                                <div>
-                                    {{$order->user?->email}}
-                                </div>
-                                <div>
-                                    {{$order->user?->phone}}
-                                </div>
-                                </p>
-                                <p>{{$order->address?->address}}</p>
-                            </div>
-                            <div class="px-4 mt-4 mb-2">
-
-                                    <a href="#">
-                                        <span class="badge badge-dodger-blue w-100 text-blue p-3 rounded-3" 
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                                             onclick="customer_history();">
                                             {{ translate("Customer’s History") }}
                                         </span>
@@ -214,18 +117,13 @@
 
 
                                     <a href="#">
-<<<<<<< HEAD
                                         <span
                                             class="mt-2 badge  w-100  p-3 rounded-3 {{$order->user->is_suspicious == 1 ? "badge-purple " : " badge-dodger-blue text-blue" }} "
-=======
-                                        <span class="mt-2 badge  w-100  p-3 rounded-3 {{$order->user->is_suspicious == 1 ? "badge-purple " : " badge-dodger-blue text-blue" }} " 
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                                             onclick="confirm_suspicious('{{route('customers.suspicious', encrypt($order->user->id))}}');">
                                             {{ translate(" Mark as " . ($order->user->is_suspicious == 1 ? 'unsuspect' : 'suspicious') . " ") }}
                                         </span>
                                     </a>
 
-<<<<<<< HEAD
                                 </div>
                             </div>
                         </div>
@@ -253,8 +151,10 @@
                                 <p><b>{{format_price($order->preorder_product->unit_price)}}</b></p>
                                 <p>{{ translate('Price') }}</p>
                                 <p><b>{{format_price($order->subtotal)}}</b></p>
-=======
->>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
+                            </div>
+                        </div>
+                    </div>
+                </div>
                             </div>
                         </div>
                     </div>
