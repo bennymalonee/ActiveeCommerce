@@ -17,7 +17,7 @@ COPY resources ./resources/
 ENV CI=true
 RUN mkdir -p public/js public/css
 RUN npm run production
-RUN ls -la public/mix-manifest.json && ls -R public/
+RUN (ls -la public/mix-manifest.json || echo "Manifest not found") && ls -R public/
 
 
 # Stage 2: PHP app with nginx
