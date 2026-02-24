@@ -58,7 +58,7 @@ WORKDIR /var/www/html
 
 # Composer deps (composer.lock optional)
 COPY composer.json composer.lock* ./
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist -v
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --no-scripts --no-autoloader --prefer-dist -vvv 2>&1 | tail -100
 
 # App code
 COPY . .
