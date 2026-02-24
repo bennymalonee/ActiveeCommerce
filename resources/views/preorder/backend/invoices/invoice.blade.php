@@ -358,7 +358,11 @@
 						<tr>
 							<td class="text-left">
 								@php
+<<<<<<< HEAD
+									$removedXML = '<' . '?xml version="1.0" encoding="UTF-8"?' . '>';
+=======
 									$removedXML = '<?xml version="1.0" encoding="UTF-8"?>';
+>>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
 								@endphp
 								{!! str_replace($removedXML,"", QrCode::size(100)->generate($order->order_code)) !!}
 							</td>

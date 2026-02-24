@@ -83,8 +83,13 @@
                             <div class="col-lg-2">
                                 <select class="form-control form-control-sm aiz-selectpicker" name="type" onchange="sort_products()">
                                     <option value="">{{ translate('Filter by') }}</option>
+<<<<<<< HEAD
+                                    <option value="unit_price,desc" @isset($col_name) @isset($query) @if($col_name == 'unit_price' && $query == 'desc') selected @endif @endisset @endisset>{{translate('Base Price (High > Low)')}}</option>
+                                    <option value="unit_price,asc" @isset($col_name) @isset($query) @if($col_name == 'unit_price' && $query == 'asc') selected @endif @endisset @endisset>{{translate('Base Price (Low > High)')}}</option>
+=======
                                     <option value="unit_price,desc" @isset($col_name , $query) @if($col_name == 'unit_price' && $query == 'desc') selected @endif @endisset>{{translate('Base Price (High > Low)')}}</option>
                                     <option value="unit_price,asc" @isset($col_name , $query) @if($col_name == 'unit_price' && $query == 'asc') selected @endif @endisset>{{translate('Base Price (Low > High)')}}</option>
+>>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
                                 </select>
                             </div>
                             <div class="col-lg-4">

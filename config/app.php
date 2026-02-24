@@ -171,7 +171,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         KingFlamez\Rave\RaveServiceProvider::class,
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         /*
          * Package Service Providers...
          */
@@ -237,7 +241,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+<<<<<<< HEAD
+        'PDF' => Mpdf\LaravelMpdf\Facades\LaravelMpdf::class,
+=======
         'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
+>>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
         'Str' => Illuminate\Support\Str::class,
         'Rave' => KingFlamez\Rave\Facades\Rave::class,
     ],

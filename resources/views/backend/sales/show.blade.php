@@ -267,9 +267,15 @@
             </div>
             <div class="mb-3 mt-3">
                 @php
+<<<<<<< HEAD
+					$removedXML = '<' . '?xml version="1.0" encoding="UTF-8"?' . '>';
+				@endphp
+				{!! str_replace($removedXML,"", QrCode::size(100)->generate($order->code)) !!}
+=======
                     $removedXML = '<?xml version="1.0" encoding="UTF-8"?>';
                 @endphp
                 {!! str_replace($removedXML, '', QrCode::size(100)->generate($order->code)) !!}
+>>>>>>> 69a9cd1a8fe75090888a01f1747deb3f74fcaa01
             </div>
             <div class="row gutters-5">
                 <div class="col text-md-left text-center">
