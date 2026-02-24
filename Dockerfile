@@ -17,7 +17,7 @@ COPY resources ./resources/
 ENV CI=true
 RUN mkdir -p public/js public/css
 RUN npm run production
-RUN (ls -la public/mix-manifest.json || echo "Manifest not found") && ls -R public/
+RUN (ls -la public/mix-manifest.json || echo "Manifest not found") && ls -la && ls -R public/
 
 
 # Stage 2: PHP app with nginx
@@ -57,8 +57,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Composer deps (composer.lock optional)
-COPY composer.json ./
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
+COPY composer.json composer.lock* ./
+RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist -v
 
 # App code
 COPY . .
