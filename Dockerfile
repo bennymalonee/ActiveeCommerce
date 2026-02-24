@@ -14,7 +14,8 @@ RUN npm install --legacy-peer-deps
 COPY webpack.mix.js ./
 COPY resources ./resources/
 
-RUN npm run production
+RUN npm run production && ls -la public/js public/css public/mix-manifest.json
+
 
 # Stage 2: PHP app with nginx
 FROM php:8.2-fpm-bookworm
@@ -62,7 +63,8 @@ COPY . .
 # Bring in built frontend assets
 COPY --from=frontend /app/public/js ./public/js
 COPY --from=frontend /app/public/css ./public/css
-COPY --from=frontend /app/public/mix-manifest.json ./public/mix-manifest.json 2>/dev/null || true
+COPY --from=frontend /app/public/mix-manifest.json ./public/mix-manifest.json
+
 
 RUN composer dump-autoload --optimize
 
