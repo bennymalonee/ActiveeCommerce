@@ -40,61 +40,61 @@ class RouteServiceProvider extends ServiceProvider
    */
   public function map()
   {
-    //$this->mapApiRoutes();
+    $this->mapApiRoutes();
 
-    //$this->mapApiSellerRoutes();
+    $this->mapApiSellerRoutes();
 
-    //$this->mapAdminRoutes();
+    $this->mapAdminRoutes();
 
-    //$this->mapSellerRoutes();
+    $this->mapSellerRoutes();
 
-    //$this->mapAffiliateRoutes();
+    $this->mapAffiliateRoutes();
 
-    //$this->mapRefundRoutes();
+    $this->mapRefundRoutes();
 
-    //$this->mapClubPointsRoutes();
+    $this->mapClubPointsRoutes();
 
-    //$this->mapOtpRoutes();
+    $this->mapOtpRoutes();
 
-    //$this->mapOfflinePaymentRoutes();
+    $this->mapOfflinePaymentRoutes();
 
-    //$this->mapAfricanPaymentGatewayRoutes();
+    $this->mapAfricanPaymentGatewayRoutes();
 
-    //$this->mapPaytmRoutes();
+    $this->mapPaytmRoutes();
 
-    //$this->mapPosRoutes();
+    $this->mapPosRoutes();
 
-    //$this->mapSellerPackageRoutes();
+    $this->mapSellerPackageRoutes();
 
-    //$this->mapDeliveryBoyRoutes();
+    $this->mapDeliveryBoyRoutes();
 
-    //$this->mapAuctionRoutes();
+    $this->mapAuctionRoutes();
 
-    //$this->mapWholesaleRoutes();
+    $this->mapWholesaleRoutes();
 
-    //$this->mapPreorderRoutes();
+    $this->mapPreorderRoutes();
 
-    //$this->mapCybersourceRoutes();
+    $this->mapCybersourceRoutes();
 
-    //$this->mapGstRoutes();
+    $this->mapGstRoutes();
 
-    //$this->mapShiprocketRoutes();
+    $this->mapShiprocketRoutes();
 
-    //$this->mapSteadfastRoutes();
+    $this->mapSteadfastRoutes();
 
-    //$this->mapPathaoRoutes();
+    $this->mapPathaoRoutes();
 
-    //$this->mapKnetRoutes();
+    $this->mapKnetRoutes();
 
-    //$this->mapUddoktapayRoutes();
+    $this->mapUddoktapayRoutes();
 
-    //$this->mapRedxRoutes();
+    $this->mapRedxRoutes();
+    
+    $this->mapWebRoutes();
 
-    //$this->mapWebRoutes();
+    // $this->mapInstallRoutes();
 
-    $this->mapInstallRoutes();
-
-    //$this->mapUpdateRoutes();
+    // $this->mapUpdateRoutes();
   }
 
   /**
@@ -380,6 +380,7 @@ class RouteServiceProvider extends ServiceProvider
        ->group(base_path('routes/api.php'));
   }
 
+
   /**
    * Define the "b2b" routes for the application.
    *
@@ -406,35 +407,35 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-     /**
-     * Define the "GST System" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapGstRoutes()
-    {
-      Route::middleware('web')
-        ->namespace($this->namespace)
-        ->group(base_path('routes/gst.php'));
-    }
+  /**
+   * Define the "GST System" routes for the application.
+   *
+   * These routes all receive session state, CSRF protection, etc.
+   *
+   * @return void
+   */
+  protected function mapGstRoutes()
+  {
+    Route::middleware('web')
+       ->namespace($this->namespace)
+       ->group(base_path('routes/gst.php'));
+  }
 
-    /**
-     * Define the "Shiprocket System" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapShiprocketRoutes()
-    {
-      Route::middleware('web')
-        ->namespace($this->namespace)
-        ->group(base_path('routes/shiprocket.php'));
-    }
+  /**
+   * Define the "Shiprocket System" routes for the application.
+   *
+   * These routes all receive session state, CSRF protection, etc.
+   *
+   * @return void
+   */
+  protected function mapShiprocketRoutes()
+  {
+    Route::middleware('web')
+       ->namespace($this->namespace)
+       ->group(base_path('routes/shiprocket.php'));
+  }
 
-    /**
+  /**
    * Define the "Steadfast System" routes for the application.
    *
    * These routes all receive session state, CSRF protection, etc.
@@ -476,7 +477,7 @@ class RouteServiceProvider extends ServiceProvider
        ->group(base_path('routes/knet.php'));
   }
 
-    /**
+  /**
    * Define the "Uddoktapay" routes for the application.
    *
    * These routes all receive session state, CSRF protection, etc.
@@ -489,7 +490,7 @@ class RouteServiceProvider extends ServiceProvider
        ->namespace($this->namespace)
        ->group(base_path('routes/uddoktapay.php'));
   }
-
+  
     /**
    * Define the "Redx System" routes for the application.
    *

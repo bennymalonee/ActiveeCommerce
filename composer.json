@@ -34,7 +34,7 @@
         "mercadopago/dx-php": "^2.5",
         "mpdf/mpdf": "^8.1",
         "myfatoorah/laravel-package": "^2.2",
-        "meneses/laravel-mpdf": "^1.1",
+        "carlos-meneses/laravel-mpdf": "^2.1",
         "paypal/paypal-checkout-sdk": "^1.0",
         "predis/predis": "^2.1",
         "psr/log": "^2.0",
@@ -100,6 +100,9 @@
         "optimize-autoloader": true,
         "allow-plugins": {
             "symfony/thanks": true
+        },
+        "audit": {
+            "block-insecure": false
         }
     },
     "minimum-stability": "dev",
